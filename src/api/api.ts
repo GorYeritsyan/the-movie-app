@@ -1,5 +1,5 @@
 
-import { GenreName, GenresList } from "@/types/types";
+import { FilmsData, GenreName, GenresList } from "@/types/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // 'https://api.themoviedb.org/3' <= baseURL
@@ -17,16 +17,23 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.themoviedb.org/3",
+    baseUrl: import.meta.env.VITE_BASE_URL,
     headers: {
       Authorization: `Bearer ${import.meta.env.VITE_BEAR_TOKEN}`,
     },
   }),
   endpoints: (builder) => ({
-    getGenresList: builder.query<GenresList, void>({
+    getGenresList: builder.query<GenreName[], void>({
       query: () => "/genre/movie/list?language=en-US",
+      transformResponse: (res: GenresList) => res.genres 
     }),
+
+    //get all movies in the home page
+
+    getAllMovies: builder.query<FilmsData, number | void>({
+      query: (page = 1) => `/discover/movie?language=en-US&page=${page}`
+    })
   }),
 });
 
-export const { useGetGenresListQuery } = api;
+export const { useGetGenresListQuery, useGetAllMoviesQuery } = api;
