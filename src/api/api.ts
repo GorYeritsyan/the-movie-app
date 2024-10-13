@@ -1,5 +1,5 @@
 
-import { GenresList } from "@/types/types";
+import { GenreName, GenresList } from "@/types/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // 'https://api.themoviedb.org/3' <= baseURL
