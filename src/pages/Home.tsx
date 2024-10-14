@@ -1,24 +1,28 @@
-import { useGetAllMoviesQuery } from "@/api/api"
-import Container from "@/components/shared/Container"
+import { useGetAllMoviesQuery } from "@/api/api";
+import Container from "@/components/shared/Container";
+import FilmCard from "@/components/shared/FilmCard";
+import SkeletonCard from "@/components/shared/SkeletonCard";
+import { useEffect } from "react";
 
-const imageUrl = 'https://image.tmdb.org/t/p/w500'
+let arr = [1, 2, 3, 4, 5, 6, 7, 8]
 
 const Home = () => {
-  const {data} = useGetAllMoviesQuery()
+  const { data, isLoading } = useGetAllMoviesQuery();
+
   return (
     <main>
       <Container>
-        <div className="flex flex-wrap items-center justify-center gap-4 py-4">
-        {data?.results.map(film => (
-          <div className="w-[300px]">
-            <img src={imageUrl + film.poster_path} alt="films" />
-            <h3>{film.title}</h3>
-          </div>
-        ))}
+        <div className="flex py-6 flex-wrap items-center justify-center gap-x-12 gap-y-8 py-4">
+          {isLoading ? (
+            // <SkeletonCard />
+            arr.map(el => <SkeletonCard />)
+          ) : (
+            data?.results.map((film) => <FilmCard key={film.id} film={film} />)
+          )}
         </div>
       </Container>
     </main>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

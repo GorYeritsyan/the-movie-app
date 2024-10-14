@@ -15,8 +15,8 @@ const GenresNavigation = () => {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-          <NavigationMenuContent className="bg-slate-800">
+          <NavigationMenuTrigger className="dark">Components</NavigationMenuTrigger>
+          <NavigationMenuContent className="dark bg-background">
             <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] md:grid-cols-2 lg:w-[500px] ">
               {data?.map((el) => (
                 <NavigationMenuLink
