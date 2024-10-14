@@ -3,11 +3,11 @@ import GenresNavigation from "./GenresNavigation";
 
 const Header = () => {
   return (
-    <header className="h-16 dark bg-background/95  backdrop-blur-lg sticky top-0">
+    <header className="h-16 dark bg-background/90 border-b-2 border-b-white/5  backdrop-blur-lg sticky top-0">
       <Container>
         <div className="flex  space-x-10 items-center h-full">
-          <h2 className="text-green-500  font-bold scroll-m-20 pb-2 text-4xl tracking-tight first:mt-0">
-            Logo
+          <h2 className="text-green-500 cursor-pointer  font-bold scroll-m-20 pb-2 text-4xl tracking-tight first:mt-0">
+            hulu
           </h2>
           <GenresNavigation />
         </div>
