@@ -1,6 +1,7 @@
 import { useGetAllMoviesQuery } from "@/api/api";
 import Container from "@/components/shared/Container";
 import FilmCard from "@/components/shared/FilmCard";
+import FilmPagination from "@/components/shared/FilmPagination";
 import SkeletonCard from "@/components/shared/SkeletonCard";
 import { useEffect } from "react";
 
@@ -12,7 +13,7 @@ const Home = () => {
   return (
     <main>
       <Container>
-        <div className="flex py-6 flex-wrap items-center justify-center gap-x-12 gap-y-8 py-4">
+        <div className="flex py-6 flex-wrap items-center justify-center gap-x-12 gap-y-8">
           {isLoading ? (
             // <SkeletonCard />
             arr.map(el => <SkeletonCard />)
@@ -20,6 +21,8 @@ const Home = () => {
             data?.results.map((film) => <FilmCard key={film.id} film={film} />)
           )}
         </div>
+
+        <FilmPagination />
       </Container>
     </main>
   );
