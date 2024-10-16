@@ -12,9 +12,15 @@ const filmsSlice = createSlice({
     addPage(state, action: PayloadAction<number>) {
       state.page = action.payload;
     },
+    increasePageByOne(state){
+      state.page++
+    },
+    decreasePageByOne(state){
+      state.page--
+    }
   },
 });
 
-export const { addPage } = filmsSlice.actions;
+export const { addPage, increasePageByOne, decreasePageByOne } = filmsSlice.actions;
 
 export default filmsSlice.reducer;

@@ -1,4 +1,4 @@
-import { useAppDispatch } from "@/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks/hooks";
 import {
   Pagination,
   PaginationContent,
@@ -7,39 +7,36 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "../ui/pagination";
-import { addPage } from "@/store/slices/filmsSlice";
-import { useEffect, useState } from "react";
+import { addPage, decreasePageByOne, increasePageByOne } from "@/store/slices/filmsSlice";
 import { cn } from "@/lib/utils";
 
 const paginationButtons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const FilmPagination = () => {
+  const { page } = useAppSelector((state) => state.filmsReducer);
   const dispatch = useAppDispatch();
-  const [bool, setBool] = useState(false);
-
-  function handleClick(button: number) {
-    dispatch(addPage(button));
-    setBool(true);
-  }
 
   return (
     <Pagination>
       <PaginationContent className="flex gap-x-2">
         <PaginationItem>
-          <PaginationPrevious className="cursor-pointer" />
+          <PaginationPrevious onClick={() => dispatch(decreasePageByOne())} className="cursor-pointer text-md active:bg-slate-900" />
         </PaginationItem>
         {paginationButtons.map((button) => (
           <PaginationItem key={button}>
             <PaginationLink
-              onClick={() => handleClick(button)}
-              className={"cursor-pointer px-5 py-4"}
+              onClick={() => dispatch(addPage(button))}
+              className={cn(
+                " cursor-pointer p-5 active:bg-slate-900",
+                button === page && "bg-green-500 hover:bg-green-600 active:bg-green-700"
+              )}
             >
               {button}
             </PaginationLink>
           </PaginationItem>
         ))}
         <PaginationItem>
-          <PaginationNext className="cursor-pointer" />
+          <PaginationNext onClick={() => dispatch(increasePageByOne())} className="cursor-pointer text-md active:bg-slate-900" />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
