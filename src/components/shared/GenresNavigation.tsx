@@ -7,6 +7,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "../ui/navigation-menu";
+import { NavLink } from "react-router-dom";
 
 const GenresNavigation = () => {
   const { data } = useGetGenresListQuery();
@@ -21,7 +22,7 @@ const GenresNavigation = () => {
               {data?.map((el) => (
                 <NavigationMenuLink
                   key={el.id}
-                  className="hover:bg-gray-500 rounded px-4 py-2 text-white cursor-pointer"
+                  className=" hover:bg-slate-900 hover:text-green-500  font-semibold rounded px-4 py-2 text-white cursor-pointer"
                 >
                   {el.name}
                 </NavigationMenuLink>
