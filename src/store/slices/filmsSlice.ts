@@ -17,10 +17,13 @@ const filmsSlice = createSlice({
     },
     decreasePageByOne(state){
       state.page--
+    }, 
+    resetPage(state){
+      state.page = 1
     }
   },
 });
 
-export const { addPage, increasePageByOne, decreasePageByOne } = filmsSlice.actions;
+export const { addPage, increasePageByOne, decreasePageByOne, resetPage } = filmsSlice.actions;
 
 export default filmsSlice.reducer;

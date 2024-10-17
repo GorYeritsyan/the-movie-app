@@ -1,6 +1,7 @@
 import type { FilmInfo } from "@/types/types";
+import FilmTitle from "./FilmTitle";
 
-type FilmCardProps = {
+export type FilmCardProps = {
   film: FilmInfo;
 };
 
@@ -14,8 +15,9 @@ const FilmCard = ({ film }: FilmCardProps) => {
         alt="films"
         width={300}
       />
+
+      <FilmTitle film={film} />
    
-      <h3 className="hover:text-green-400 transition-colors duration-200 cursor-pointer text-lg font-semibold">{film.title}</h3>
     </div>
   );
 };

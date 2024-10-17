@@ -16,7 +16,7 @@ const GenresNavigation = () => {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="dark">Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="dark">Movies</NavigationMenuTrigger>
           <NavigationMenuContent className="dark bg-background">
             <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] md:grid-cols-2 lg:w-[500px] ">
               {data?.map((el) => (
