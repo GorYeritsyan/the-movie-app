@@ -1,14 +1,15 @@
-import { Outlet } from "react-router-dom"
-import Header from "./Header"
-import FilmPagination from "./FilmPagination"
+import { Outlet } from "react-router-dom";
+import Header from "./Header";
 
 const Layout = () => {
   return (
     <>
-        <Header />
+      <Header />
+      <main>
         <Outlet />
+      </main>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

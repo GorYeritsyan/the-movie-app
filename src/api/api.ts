@@ -32,8 +32,15 @@ export const api = createApi({
 
     getAllMovies: builder.query<FilmsData, number | void>({
       query: (page = 1) => `/discover/movie?language=en-US&page=${page}`
+    }),
+
+    // get specific movies filtered by genre
+
+    getGenreMovies: builder.query<FilmsData, {page: number, genreId?: string}>({
+      query: ({page, genreId}) => `/discover/movie?language=en-US&with_genres=${genreId}&page=${page}`
     })
+    
   }),
 });
 
-export const { useGetGenresListQuery, useGetAllMoviesQuery } = api;
+export const { useGetGenresListQuery, useGetAllMoviesQuery, useGetGenreMoviesQuery } = api;
