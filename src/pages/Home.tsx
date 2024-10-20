@@ -15,7 +15,6 @@ const Home = () => {
   return (
       <Container>
         <div className="flex flex-col gap-y-6 pb-8 ">
-          <h2 className="text-4xl ml-16">Discover</h2>
           <div className="flex py-6 flex-wrap items-center justify-center gap-x-8 gap-y-8">
             {isFetching
               ? // <SkeletonCard />
