@@ -11,6 +11,8 @@ import {
   addPage,
   decreasePageByOne,
   increasePageByOne,
+  nextPortion,
+  prevPortion,
 } from "@/store/slices/filmsSlice";
 import { cn } from "@/lib/utils";
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
@@ -18,7 +20,9 @@ import { useGetAllMoviesQuery, useGetGenreMoviesQuery } from "@/api/api";
 import { arr } from "@/pages/Home";
 
 const FilmPagination = () => {
-  const { page } = useAppSelector((state) => state.filmsReducer);
+  const { page, paginationPortionNumber } = useAppSelector(
+    (state) => state.filmsReducer
+  );
   const dispatch = useAppDispatch();
   const { data } = useGetAllMoviesQuery();
 
@@ -34,10 +38,9 @@ const FilmPagination = () => {
 
   // pagination logic
 
-  let [portionNumber, setPortionNumber] = useState(1);
   let portionSize = 10;
-  let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
-  let rightPortionPageNumber = portionNumber * portionSize;
+  let leftPortionPageNumber = (paginationPortionNumber - 1) * portionSize + 1;
+  let rightPortionPageNumber = paginationPortionNumber * portionSize;
 
   function handleClick(button: number) {
     dispatch(addPage(button));
@@ -47,10 +50,10 @@ const FilmPagination = () => {
   return (
     <Pagination>
       <PaginationContent className="flex gap-x-2">
-        {portionNumber > 1 && (
+        {paginationPortionNumber > 1 && (
           <PaginationItem>
             <PaginationPrevious
-              onClick={() => setPortionNumber(portionNumber - 1)}
+              onClick={() => dispatch(prevPortion())}
               className="cursor-pointer text-md active:bg-slate-900"
             />
           </PaginationItem>
@@ -77,7 +80,7 @@ const FilmPagination = () => {
           ))}
         <PaginationItem>
           <PaginationNext
-            onClick={() => setPortionNumber(portionNumber + 1)}
+            onClick={() => dispatch(nextPortion())}
             className="cursor-pointer text-md active:bg-slate-900"
           />
         </PaginationItem>

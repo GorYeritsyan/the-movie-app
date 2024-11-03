@@ -32,5 +32,6 @@ export type FilmInfo = {
 }
 
 export type FilmsSliceInitState = {
-    page: number
+    page: number;
+    paginationPortionNumber: number;
 }
