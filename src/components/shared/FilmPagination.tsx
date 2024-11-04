@@ -19,7 +19,7 @@ import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useGetAllMoviesQuery, useGetGenreMoviesQuery } from "@/api/api";
 import { arr } from "@/pages/Home";
 
-const FilmPagination = () => {
+const FilmPagination = memo(() => {
   const { page, paginationPortionNumber } = useAppSelector(
     (state) => state.filmsReducer
   );
@@ -87,7 +87,7 @@ const FilmPagination = () => {
       </PaginationContent>
     </Pagination>
   );
-};
+});
 
 //next time improve paginatin logic and complete film card design
 

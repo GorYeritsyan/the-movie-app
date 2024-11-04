@@ -1,5 +1,4 @@
-
-import { FilmsData, GenreName, GenresList } from "@/types/types";
+import { FilmInfo, FilmsData, GenreName, GenresList } from "@/types/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // 'https://api.themoviedb.org/3' <= baseURL
@@ -25,22 +24,37 @@ export const api = createApi({
   endpoints: (builder) => ({
     getGenresList: builder.query<GenreName[], void>({
       query: () => "/genre/movie/list?language=en-US",
-      transformResponse: (res: GenresList) => res.genres 
+      transformResponse: (res: GenresList) => res.genres,
     }),
 
     //get all movies in the home page
 
     getAllMovies: builder.query<FilmsData, number | void>({
-      query: (page = 1) => `/discover/movie?language=en-US&page=${page}`
+      query: (page = 1) => `/discover/movie?language=en-US&page=${page}`,
     }),
 
     // get specific movies filtered by genre
 
-    getGenreMovies: builder.query<FilmsData, {page: number, genreId?: string}>({
-      query: ({page, genreId}) => `/discover/movie?language=en-US&with_genres=${genreId}&page=${page}`
+    getGenreMovies: builder.query<
+      FilmsData,
+      { page: number; genreId?: string }
+    >({
+      query: ({ page, genreId }) =>
+        `/discover/movie?language=en-US&with_genres=${genreId}&page=${page}`,
+    }),
+
+    // get one movie
+
+    getOneMovie: builder.query<FilmInfo, string | undefined>({
+      query: (movieId) => `/movie/${movieId}?language=en-US`
     })
-    
+
   }),
 });
 
-export const { useGetGenresListQuery, useGetAllMoviesQuery, useGetGenreMoviesQuery } = api;
+export const {
+  useGetGenresListQuery,
+  useGetAllMoviesQuery,
+  useGetGenreMoviesQuery,
+  useGetOneMovieQuery
+} = api;
