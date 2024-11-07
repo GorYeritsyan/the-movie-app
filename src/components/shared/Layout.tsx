@@ -1,15 +1,13 @@
+import React from "react";
+import FilmPagination from "./FilmPagination";
 import { Outlet } from "react-router-dom";
-import Header from "./Header";
-
 
 const Layout = () => {
   return (
-    <>
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-    </>
+    <main className="pb-8">
+      <Outlet />
+      <FilmPagination />
+    </main>
   );
 };
 
