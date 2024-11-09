@@ -20,7 +20,6 @@ export type FilmInfo = {
   genre_ids: number[];
   genres?: GenreName[];
   origin_country?: string[];
-
   belongs_to_collection?: { name: string };
   production_countries?: Array<{ name: string }>;
   id: number;
@@ -28,7 +27,7 @@ export type FilmInfo = {
   original_title: string;
   overview: string;
   runtime?: number;
-  tagline?: string
+  tagline?: string;
   popularity: number;
   poster_path: string;
   release_date: Date;
@@ -42,3 +41,13 @@ export type FilmsSliceInitState = {
   page: number;
   paginationPortionNumber: number;
 };
+
+export type TrailerData = {
+  key: string;
+  name: string;
+}
+
+export type TrailerState = {
+  id: number;
+  results: TrailerData[]
+}

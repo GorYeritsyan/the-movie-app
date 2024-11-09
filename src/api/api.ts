@@ -1,4 +1,4 @@
-import { FilmInfo, FilmsData, GenreName, GenresList } from "@/types/types";
+import { FilmInfo, FilmsData, GenreName, GenresList, TrailerData, TrailerState } from "@/types/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // 'https://api.themoviedb.org/3' <= baseURL
@@ -47,6 +47,13 @@ export const api = createApi({
 
     getOneMovie: builder.query<FilmInfo, string | undefined>({
       query: (movieId) => `/movie/${movieId}?language=en-US`
+    }),
+
+    // get movie trailer
+
+    getMovieTrailer: builder.query<TrailerData[], string | undefined>({
+      query: (movieId) => `/movie/${movieId}/videos?language=en-US`,
+     transformResponse: (res: TrailerState) => res.results
     })
 
   }),
@@ -56,5 +63,6 @@ export const {
   useGetGenresListQuery,
   useGetAllMoviesQuery,
   useGetGenreMoviesQuery,
-  useGetOneMovieQuery
+  useGetOneMovieQuery,
+  useGetMovieTrailerQuery
 } = api;
