@@ -36,7 +36,7 @@ const MoviePage = () => {
   return (
     <>
       <div>
-        <Container>
+        <Container className="max-w-screen-xl">
           <div className="flex py-6">
             <MovieImage movieData={data} />
             <MovieInfo movieData={data} />
