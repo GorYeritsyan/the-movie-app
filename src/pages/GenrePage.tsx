@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { arr } from "./Home";
 import FilmPagination from "@/components/shared/FilmPagination";
 import Container from "@/components/shared/Container";
+import Movies from "@/components/shared/Movies";
 
 const GenrePage = () => {
   const { genreId } = useParams();
@@ -17,16 +18,7 @@ const GenrePage = () => {
       <Container>
         <div className="flex flex-col gap-y-6">
           <h2 className="text-4xl ml-16">Discover</h2>
-          <div className="flex py-6 flex-wrap items-center justify-center gap-x-8 gap-y-8">
-            {isFetching
-              ? // <SkeletonCard />
-                arr.map((el) => <SkeletonCard />)
-              : data?.results.map((film) => (
-                  <FilmCard key={film.id} film={film} />
-                ))}
-          </div>
-
-          {/* <FilmPagination /> */}
+          <Movies data={data} isFetching={isFetching} />
         </div>
       </Container>
     </section>
