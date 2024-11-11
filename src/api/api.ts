@@ -54,6 +54,14 @@ export const api = createApi({
     getMovieTrailer: builder.query<TrailerData[], string | undefined>({
       query: (movieId) => `/movie/${movieId}/videos?language=en-US`,
      transformResponse: (res: TrailerState) => res.results
+    }),
+
+
+    // search for movies
+
+    searchMovies: builder.query<FilmInfo[], string>({
+      query: (query) => `/search/movie?query=${query}`,
+      transformResponse: (res: FilmsData) => res.results
     })
 
   }),
@@ -64,5 +72,6 @@ export const {
   useGetAllMoviesQuery,
   useGetGenreMoviesQuery,
   useGetOneMovieQuery,
-  useGetMovieTrailerQuery
+  useGetMovieTrailerQuery,
+  useSearchMoviesQuery
 } = api;

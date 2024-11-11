@@ -1,14 +1,13 @@
 import { GenreName, GenresList } from "@/types/types";
 import { MovieProps } from "./MovieImage";
-import MovieList from "./MovieList";
 import MovieTitle from "./MovieTitle";
-import MovieUl from "./MovieUl";
+import MovieTable from "./MovieTable";
 
 const MovieInfo = ({ movieData }: MovieProps) => {
   return (
     <div className="flex flex-col justify-between  px-10 w-full">
       <MovieTitle movieData={movieData} />
-      <MovieUl movieData={movieData} />
+      <MovieTable movieData={movieData} />
     </div>
   );
 };

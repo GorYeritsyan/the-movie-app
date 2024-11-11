@@ -5,12 +5,24 @@ import { useAppDispatch } from "@/hooks/hooks";
 import { resetPage } from "@/store/slices/filmsSlice";
 import { Input } from "../ui/input";
 import { IoIosSearch } from "react-icons/io";
+import { useState } from "react";
+import { useSearchMoviesQuery } from "@/api/api";
+import SearchedMovie from "./SearchedMovie";
 
 const Header = () => {
   const dispatch = useAppDispatch();
+  const [inputValue, setInputValue] = useState("");
+  const { data: searchedMovies } = useSearchMoviesQuery(inputValue);
+
+  console.log(searchedMovies);
+
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setInputValue(e.target.value);
+  }
+
   return (
     <header className="z-50 h-16 dark bg-background/90 border-b-2 border-b-white/5  backdrop-blur-lg sticky top-0">
-      <Container >
+      <Container>
         <div className="flex space-x-10 items-center h-full">
           <h2 className="text-green-500 cursor-pointer  font-bold scroll-m-20 pb-2 text-4xl tracking-tight first:mt-0">
             <Link to="/" onClick={() => dispatch(resetPage())}>
@@ -19,11 +31,35 @@ const Header = () => {
           </h2>
           <GenresNavigation />
           <div className="relative">
-            <IoIosSearch className="absolute top-1/2 -translate-y-1/2 left-3 text-lg" />
+            <IoIosSearch className="cursor-pointer absolute top-1/2 -translate-y-1/2 left-3 text-lg" />
             <Input
-              className="w-[600px] px-10 text-lg focus-visible:ring-none focus:ring-green-500 rounded-full bg-background"
+              value={inputValue}
+              onChange={handleInputChange}
+              className="w-[400px] px-10 text-lg focus-visible:ring-none focus:ring-green-500 rounded-full bg-background"
               placeholder="Search for movies..."
             />
+            {/* {searchedMovies?.length > 0 && (
+              <ul>
+                {searchedMovies?.map(movie => (
+                  <li key={movie.id}>{movie.title}</li>
+                ))}
+              </ul>
+            )} */}
+
+            {typeof searchedMovies?.length !== "undefined" &&
+              searchedMovies?.length > 1 && (
+                <ul className="absolute top-10 bg-background rounded-md h-[600px] overflow-y-scroll border border-white/10 w-full">
+                  {searchedMovies?.map((movie) => (
+                    <Link
+                      onClick={() => setInputValue("")}
+                      to={`/movie/${movie.id}`}
+                      key={movie.id}
+                    >
+                      <SearchedMovie movie={movie} />
+                    </Link>
+                  ))}
+                </ul>
+              )}
           </div>
         </div>
       </Container>

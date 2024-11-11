@@ -38,9 +38,9 @@ const FilmPagination = memo(() => {
 
   // pagination logic
 
-  let portionSize = 10;
-  let leftPortionPageNumber = (paginationPortionNumber - 1) * portionSize + 1;
-  let rightPortionPageNumber = paginationPortionNumber * portionSize;
+  const portionSize = 10;
+  const leftPortionPageNumber = (paginationPortionNumber - 1) * portionSize + 1;
+  const rightPortionPageNumber = paginationPortionNumber * portionSize;
 
   function handleClick(button: number) {
     dispatch(addPage(button));
