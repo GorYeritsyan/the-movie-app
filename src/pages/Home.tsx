@@ -2,8 +2,10 @@ import { useGetAllMoviesQuery } from "@/api/api";
 import Container from "@/components/shared/Container";
 import FilmCard from "@/components/shared/FilmCard";
 import FilmPagination from "@/components/shared/FilmPagination";
+import Movies from "@/components/shared/Movies";
 import SkeletonCard from "@/components/shared/SkeletonCard";
 import { useAppSelector } from "@/hooks/hooks";
+import { motion } from "framer-motion";
 
 export let arr = [1, 2, 3, 4, 5, 6, 7, 8];
 
@@ -15,14 +17,7 @@ const Home = () => {
     <section>
       <Container>
         <div className="flex flex-col gap-y-6">
-          <div className="flex py-6 flex-wrap items-center justify-center gap-x-8 gap-y-8">
-            {isFetching
-              ? // <SkeletonCard />
-                arr.map((el) => <SkeletonCard />)
-              : data?.results.map((film) => (
-                  <FilmCard key={film.id} film={film} />
-                ))}
-          </div>
+          <Movies data={data} isFetching={isFetching} />
         </div>
       </Container>
     </section>
