@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export type FilmCardProps = {
   film: FilmInfo;
-  index: number
+  index?: number
 };
 
 const variants = {
@@ -20,11 +20,10 @@ const FilmCard = ({ film, index }: FilmCardProps) => {
       initial='hidden'
       animate='visible'
       transition={{
-        delay: index * 0.05,
+        delay: index as number * 0.05,
         ease: 'easeInOut',
         duration: 0.5,
       }}
-      // viewport={{amount: 0}}
       className="p-2 ring-4 ring-offset-background ring-background hover:ring-green-500  rounded-xl flex flex-col gap-y-3"
     >
       <Link to={`/movie/${film.id}`}>

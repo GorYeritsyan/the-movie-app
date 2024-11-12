@@ -8,6 +8,12 @@ import { IoIosSearch } from "react-icons/io";
 import { useState } from "react";
 import { useSearchMoviesQuery } from "@/api/api";
 import SearchedMovie from "./SearchedMovie";
+import { motion } from "framer-motion";
+
+const variants = {
+  hidden: { opacity: 0, y: -10},
+  visible: { opacity: 1,  y: 0},
+};
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -48,7 +54,18 @@ const Header = () => {
 
             {typeof searchedMovies?.length !== "undefined" &&
               searchedMovies?.length > 1 && (
-                <ul className="absolute top-10 bg-background rounded-md h-[600px] overflow-y-scroll border border-white/10 w-full">
+                <motion.ul
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  transition={{
+                    duration: 0.2,
+                    ease: 'easeIn',
+                    delay: 0.2
+
+                  }}
+                  className="absolute top-10 bg-background rounded-md h-[600px] overflow-y-scroll border border-white/10 w-full"
+                >
                   {searchedMovies?.map((movie) => (
                     <Link
                       onClick={() => setInputValue("")}
@@ -58,7 +75,7 @@ const Header = () => {
                       <SearchedMovie movie={movie} />
                     </Link>
                   ))}
-                </ul>
+                </motion.ul>
               )}
           </div>
         </div>
