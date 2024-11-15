@@ -1,8 +1,6 @@
-import { useGetAllMoviesQuery } from "@/api/api";
-import { useAppSelector } from "@/hooks/hooks";
 import SkeletonCard from "./SkeletonCard";
 import FilmCard from "./FilmCard";
-import { arr } from "@/pages/Home";
+
 import { FilmsData } from "@/types/types";
 
 type Movies = {
@@ -11,11 +9,16 @@ type Movies = {
 }
 
 const Movies = ({data, isFetching}: Movies) => {
+    const skeletons = [];
+
+    for(let i = 0; i<8; i++){
+        skeletons.push(i)
+    }
 
   return (
     <div className="flex py-6 flex-wrap items-center justify-center gap-x-8 gap-y-8">
       {isFetching
-        ? arr.map((el) => <SkeletonCard />)
+        ? skeletons.map((skeleton) => <SkeletonCard key={skeleton} />)
         : data?.results.map((film, i) => (
             <FilmCard key={film.id} film={film} index={i} />
           ))}

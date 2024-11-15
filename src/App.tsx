@@ -9,11 +9,14 @@ const App = () => {
   return (
     <>
       <Routes>
+        {/* Root Layout contains only header */}
         <Route path="/" element={<RootLayout />}>
+          {/* Layout contain pagination too */}
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/genre/:genreId" element={<GenrePage />} />
           </Route>
+
           <Route path="/movie/:movieId" element={<MoviePage />} />
         </Route>
       </Routes>
