@@ -11,8 +11,8 @@ import SearchedMovie from "./SearchedMovie";
 import { motion } from "framer-motion";
 
 const variants = {
-  hidden: { opacity: 0, y: -10},
-  visible: { opacity: 1,  y: 0},
+  hidden: { opacity: 0, y: -10 },
+  visible: { opacity: 1, y: 0 },
 };
 
 const Header = () => {
@@ -60,9 +60,8 @@ const Header = () => {
                   animate="visible"
                   transition={{
                     duration: 0.2,
-                    ease: 'easeIn',
-                    delay: 0.2
-
+                    ease: "easeIn",
+                    delay: 0.2,
                   }}
                   className="absolute top-10 bg-background rounded-md h-[600px] overflow-y-scroll border border-white/10 w-full"
                 >

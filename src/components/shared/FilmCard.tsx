@@ -20,9 +20,9 @@ const FilmCard = ({ film, index }: FilmCardProps) => {
       initial='hidden'
       animate='visible'
       transition={{
-        delay: index as number * 0.05,
+        delay: index as number * 0.1,
         ease: 'easeInOut',
-        duration: 0.5,
+        duration: 0.6,
       }}
       className="p-2 ring-4 ring-offset-background ring-background hover:ring-green-500  rounded-xl flex flex-col gap-y-3"
     >

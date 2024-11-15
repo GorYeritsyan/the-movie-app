@@ -9,7 +9,7 @@ const MovieImage = ({ movieData }: MovieProps) => {
   return (
     <div className="flex flex-col gap-y-2 h-full">
       <img
-        className="rounded"
+        className="rounded-xl"
         src={import.meta.env.VITE_IMAGE_500_URL + movieData?.poster_path}
         alt="movie image"
         width={330}

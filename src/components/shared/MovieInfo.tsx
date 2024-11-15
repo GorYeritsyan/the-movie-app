@@ -1,4 +1,3 @@
-import { GenreName, GenresList } from "@/types/types";
 import { MovieProps } from "./MovieImage";
 import MovieTitle from "./MovieTitle";
 import MovieTable from "./MovieTable";
