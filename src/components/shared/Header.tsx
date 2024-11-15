@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useSearchMoviesQuery } from "@/api/api";
 import SearchedMovie from "./SearchedMovie";
 import { motion } from "framer-motion";
+import Loader from "@/components/shared/Loader.tsx";
 
 const variants = {
   hidden: { opacity: 0, y: -10 },
@@ -18,7 +19,7 @@ const variants = {
 const Header = () => {
   const dispatch = useAppDispatch();
   const [inputValue, setInputValue] = useState("");
-  const { data: searchedMovies } = useSearchMoviesQuery(inputValue);
+  const { data: searchedMovies, isFetching } = useSearchMoviesQuery(inputValue);
 
   console.log(searchedMovies);
 
@@ -44,13 +45,7 @@ const Header = () => {
               className="w-[400px] px-10 text-lg focus-visible:ring-none focus:ring-green-500 rounded-full bg-background"
               placeholder="Search for movies..."
             />
-            {/* {searchedMovies?.length > 0 && (
-              <ul>
-                {searchedMovies?.map(movie => (
-                  <li key={movie.id}>{movie.title}</li>
-                ))}
-              </ul>
-            )} */}
+
 
             {typeof searchedMovies?.length !== "undefined" &&
               searchedMovies?.length > 1 && (
@@ -60,19 +55,18 @@ const Header = () => {
                   animate="visible"
                   transition={{
                     duration: 0.2,
-                    ease: "easeIn",
-                    delay: 0.2,
+                    ease: "easeIn"
                   }}
-                  className="absolute top-10 bg-background rounded-md h-[600px] overflow-y-scroll border border-white/10 w-full"
+                  className="absolute top-10 bg-background rounded-md max-h-[600px] overflow-y-scroll border border-white/10 w-full"
                 >
-                  {searchedMovies?.map((movie) => (
-                    <Link
-                      onClick={() => setInputValue("")}
-                      to={`/movie/${movie.id}`}
-                      key={movie.id}
-                    >
-                      <SearchedMovie movie={movie} />
-                    </Link>
+                  {isFetching ? <li className='flex justify-center m-3'><Loader /></li> : searchedMovies?.map((movie) => (
+                      <Link
+                          onClick={() => setInputValue("")}
+                          to={`/movie/${movie.id}`}
+                          key={movie.id}
+                      >
+                        <SearchedMovie movie={movie} />
+                      </Link>
                   ))}
                 </motion.ul>
               )}

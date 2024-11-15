@@ -39,7 +39,9 @@ const MoviePage = () => {
       <div>
         <Container className="max-w-screen-xl">
           {isMovieFetching ? (
-            <Loader />
+            <div className='flex justify-center items-center mt-20'>
+              <Loader />
+            </div>
           ) : (
             <>
               {" "}

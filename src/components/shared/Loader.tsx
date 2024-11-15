@@ -6,7 +6,7 @@ const Loader = () => {
     <motion.div
       animate={{ rotate: "360deg" }}
       transition={{ duration: 0.8, repeat: Infinity }}
-      className="flex justify-center mt-20 items-center"
+      className='w-fit'
     >
       <TbLoader2 className="text-5xl text-green-500" />
     </motion.div>
