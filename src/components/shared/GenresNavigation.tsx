@@ -30,7 +30,7 @@ const GenresNavigation = () => {
                   className={({ isActive }) =>
                     isActive
                       ? "hover:bg-green-600 bg-green-500  font-semibold rounded px-4 py-2 cursor-pointer"
-                      : "hover:bg-slate-900 hover:text-green-500  font-semibold rounded px-4 py-2 text-white cursor-pointer"
+                      : "hover:bg-green-500 active:bg-green-600  font-semibold rounded px-4 py-2 text-white cursor-pointer"
                   }
                 >
                   {el.name}
