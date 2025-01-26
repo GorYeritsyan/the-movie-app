@@ -1,14 +1,10 @@
 import { FilmInfo, FilmsData, GenreName, GenresList, TrailerData, TrailerState } from "@/types/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseQueryOptions } from "./config";
 
 export const api = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_BASE_URL,
-    headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_BEAR_TOKEN}`,
-    },
-  }),
+  baseQuery: fetchBaseQuery(baseQueryOptions),
   endpoints: (builder) => ({
     getGenresList: builder.query<GenreName[], void>({
       query: () => "/genre/movie/list?language=en-US",
