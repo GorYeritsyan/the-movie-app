@@ -1,6 +1,6 @@
 # 🎬 Film Project
 
-A web application built with React, Redux Toolkit, TypeScript, and Tailwind CSS that lets users search for movies, view detailed information, filter by genre, and watch trailers. The project uses the TMDB (The Movie Database) API.
+A web application built with React, Redux Toolkit (RTK Query), TypeScript, and Tailwind CSS that lets users search for movies, view detailed information, filter by genre, and watch trailers. The project uses the TMDB (The Movie Database) API.
 
 ---
 
