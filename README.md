@@ -83,6 +83,6 @@ src/
 
 ## 🚀 Live Demo
 
-https://your-project-link.vercel.app
+https://the-movies-ecru.vercel.app/
 
 ---
