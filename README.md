@@ -1,50 +1,88 @@
-# React + TypeScript + Vite
+# 🎬 Film Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application built with React, Redux Toolkit, TypeScript, and Tailwind CSS that lets users search for movies, view detailed information, filter by genre, and watch trailers. The project uses the TMDB (The Movie Database) API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- Search movies by title
+- Filter movies by genre
+- View detailed movie information (poster, rating, overview, release date)
+- Watch official trailers
+- Global state management with Redux Toolkit
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠 Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- React
+- TypeScript
+- Redux Toolkit
+- Tailwind CSS
+- shadcn/ui
+- RTK Query
+- Vite
+- TMDB REST API
+
+---
+
+## 🌍 API
+
+This project uses the TMDB (The Movie Database) API.
+
+Official Website: https://www.themoviedb.org/
+
+You need your own TMDB API key to run the project locally.
+
+---
+
+## 📦 Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/GorYeritsyan/the-movie-app.git
+```
+### 2. Navigate to the project folder
+```bash
+cd the-movie-app
+```
+### 3. Install dependencies
+```bash
+npm install
+```
+### 4. Create a .env file in the root directory and add:
+```env
+VITE_BEAR_TOKEN=
+VITE_IMAGE_500_URL=
+VITE_IMAGE_ORIGINAL_URL=
+VITE_BASE_URL=
+```
+### 5. Start the development server
+```bash
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## 📂 Project Structure
+```bash
+src/
+ ├── api/              # RTK Query configuration and endpoints
+ ├── components/       # Reusable components
+ ├── hooks/            # Custom React hooks
+ ├── lib/              # Utility functions and helpers
+ ├── pages/            # Application pages
+ ├── store/            # Redux store and slices
+ ├── types/            # TypeScript types
+ └── main.tsx
 ```
+
+---
+
+## 🚀 Live Demo
+
+https://your-project-link.vercel.app
+
+---
