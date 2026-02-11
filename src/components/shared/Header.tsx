@@ -5,8 +5,6 @@ import { useAppDispatch } from "@/hooks/hooks";
 import { resetPage } from "@/store/slices/filmsSlice";
 import SearchInput from "@/components/shared/SearchInput.tsx";
 
-
-
 const Header = () => {
   const dispatch = useAppDispatch();
 

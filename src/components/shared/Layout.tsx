@@ -1,4 +1,3 @@
-import React from "react";
 import FilmPagination from "./FilmPagination";
 import { Outlet } from "react-router-dom";
 

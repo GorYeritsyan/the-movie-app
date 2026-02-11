@@ -9,15 +9,12 @@ import {
 } from "../ui/pagination";
 import {
   addPage,
-  decreasePageByOne,
-  increasePageByOne,
   nextPortion,
   prevPortion,
 } from "@/store/slices/filmsSlice";
 import { cn } from "@/lib/utils";
-import { memo, useCallback, useEffect, useMemo, useState } from "react";
-import { useGetAllMoviesQuery, useGetGenreMoviesQuery } from "@/api/api";
-import { arr } from "@/pages/Home";
+import { memo, useMemo} from "react";
+import { useGetAllMoviesQuery } from "@/api/api";
 
 const FilmPagination = memo(() => {
   const { page, paginationPortionNumber } = useAppSelector(

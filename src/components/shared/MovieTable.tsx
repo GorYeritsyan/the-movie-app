@@ -1,13 +1,8 @@
-import React, { ReactNode } from "react";
-import MovieList from "./MovieList";
 import { MovieProps } from "./MovieImage";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableHead,
-  TableHeader,
   TableRow,
 } from "../ui/table";
 
