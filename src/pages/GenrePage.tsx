@@ -14,7 +14,7 @@ const GenrePage = () => {
     <section>
       <Container>
         <div className="flex flex-col py-4">
-          <h2 className="text-4xl ml-16">{genres?.filter(el => el?.id === +genreId).map(el => <span key={el.id}>{el.name}</span>)}</h2>
+          <h2 className="text-4xl ml-16">{genres?.filter(el => el?.id === +genreId!).map(el => <span key={el.id}>{el.name}</span>)}</h2>
           <Movies data={data} isFetching={isFetching} />
         </div>
       </Container>
