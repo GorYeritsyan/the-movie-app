@@ -1,10 +1,6 @@
 import {useGetGenreMoviesQuery, useGetGenresListQuery} from "@/api/api";
-import FilmCard from "@/components/shared/FilmCard";
-import SkeletonCard from "@/components/shared/SkeletonCard";
 import { useAppSelector } from "@/hooks/hooks";
 import { useParams } from "react-router-dom";
-import { arr } from "./Home";
-import FilmPagination from "@/components/shared/FilmPagination";
 import Container from "@/components/shared/Container";
 import Movies from "@/components/shared/Movies";
 

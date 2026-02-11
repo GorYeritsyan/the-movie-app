@@ -13,8 +13,6 @@ const MoviePage = () => {
   const { data, isFetching: isMovieFetching } = useGetOneMovieQuery(movieId);
   const {
     data: trailerData,
-    isFetching,
-    isLoading,
   } = useGetMovieTrailerQuery(movieId);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 

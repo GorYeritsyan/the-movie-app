@@ -25,9 +25,12 @@ const FilmPagination = memo(() => {
 
   const paginationButtons = useMemo(() => {
     const array: number[] = [];
-    for (let i = 1; i <= data?.total_pages; i++) {
-      console.log("loop");
-      array.push(i);
+
+    if(data?.total_pages){
+      for (let i = 1; i <= data?.total_pages; i++) {
+        console.log("loop");
+        array.push(i);
+      }
     }
 
     return array;

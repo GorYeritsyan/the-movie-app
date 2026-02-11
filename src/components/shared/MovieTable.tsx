@@ -8,7 +8,7 @@ import {
 
 interface ITableItems {
   name: string;
-  info?: string | Date;
+  info?: string;
 }
 
 const MovieTable = ({ movieData }: MovieProps) => {
